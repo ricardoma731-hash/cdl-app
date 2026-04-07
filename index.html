@@ -1,169 +1,139 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CDL Arujá</title>
+  <meta charset="UTF-8">
+  <title>CDL Arujá App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body {
-  margin:0;
-  font-family: Arial;
-  background:#0f172a;
-  color:white;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      text-align: center;
+    }
 
-header {
-  background:#020617;
-  padding:15px;
-  text-align:center;
-}
+    header {
+      background: white;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 
-header img {
-  height:50px;
-}
+    header img {
+      max-width: 180px;
+    }
 
-.container {
-  padding:20px;
-}
+    h1 {
+      margin-top: 10px;
+      color: #1e3a8a;
+    }
 
-.card {
-  background:#1e293b;
-  padding:20px;
-  border-radius:12px;
-  margin-bottom:15px;
-}
+    .container {
+      padding: 30px;
+    }
 
-.button {
-  display:block;
-  margin-top:10px;
-  padding:12px;
-  background:#22c55e;
-  color:white;
-  text-align:center;
-  border-radius:8px;
-  text-decoration:none;
-}
+    .btn {
+      display: block;
+      width: 90%;
+      max-width: 400px;
+      margin: 10px auto;
+      padding: 15px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
 
-.grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
+    .btn:hover {
+      transform: scale(1.05);
+    }
 
-.footer {
-  background:#020617;
-  padding:20px;
-  text-align:center;
-  font-size:12px;
-  margin-top:30px;
-}
+    .spc { background: #2563eb; }
+    .whatsapp { background: #25D366; }
+    .servicos { background: #7c3aed; }
+    .cartao { background: #f59e0b; }
 
-.menu {
-  position:fixed;
-  bottom:0;
-  width:100%;
-  background:#020617;
-  display:flex;
-  justify-content:space-around;
-  padding:10px;
-}
+    footer {
+      margin-top: 40px;
+      background: #1e3a8a;
+      color: white;
+      padding: 20px;
+      font-size: 14px;
+    }
 
-</style>
+    footer img {
+      max-width: 80px;
+      margin: 5px;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <!-- TROQUE PELO SEU LOGO -->
-  <img src="https://via.placeholder.com/200x60?text=CDL+Aruja">
-</header>
+  <!-- TOPO COM LOGO -->
+  <header>
+    <img src="logo.png" alt="CDL Arujá">
+    <h1>CDL Arujá</h1>
+    <p>Painel do Associado</p>
+  </header>
 
-<div class="container">
+  <!-- BOTÕES -->
+  <div class="container">
 
-<div class="card">
-<h3>Bem-vindo Associado</h3>
-<p>Central de serviços CDL Arujá</p>
-</div>
+    <!-- SPC -->
+    <a class="btn spc"
+       href="https://login.spcbrasil.com.br/realms/associado/protocol/openid-connect/auth"
+       target="_blank">
+       Consultar SPC
+    </a>
 
-<div class="grid">
-  <div class="card">
-<h4>Cartão Benefícios</h4>
-<a class="button" href="https://wa.me/551125026700?text=Quero%20informações%20sobre%20o%20cartão%20de%20benefícios">
-Solicitar agora
-</a>
-</div>
+    <!-- BOLETOS -->
+    <a class="btn whatsapp"
+       href="https://wa.me/5511999999999?text=Quero%20segunda%20via%20de%20boleto"
+       target="_blank">
+       Boletos
+    </a>
 
-<div class="card">
-<h4>SPC</h4>
-<a class="button" href="https://login.spcbrasil.com.br/realms/associado/protocol/openid-connect/auth?response_type=code&client_id=spcjava&scope=openid+email+profile&redirect_uri=https%3A%2F%2Fsistema.spcbrasil.com.br%2Fspc%2Fopenid_connect_login" target="_blank">
-Consultar Crédito
-</a>
-</div>
+    <!-- ATENDIMENTO -->
+    <a class="btn whatsapp"
+       href="https://wa.me/5511999999999?text=Preciso%20de%20atendimento"
+       target="_blank">
+       Atendimento
+    </a>
 
-<div class="card">
-<h4>Boleto</h4>
-<a class="button" href="https://wa.me/551125026700?text=Quero%202%C2%AA%20via%20do%20boleto">
-Solicitar via WhatsApp
-</a>
-</div>
+    <!-- SERVIÇOS -->
+    <a class="btn servicos"
+       href="https://cdlaruja.org.br"
+       target="_blank">
+       Serviços CDL
+    </a>
 
-<div class="card">
-<h4>Serviços</h4>
-<a class="button" onclick="mostrarServicos()">Ver Serviços</a>
-</div>
+    <!-- NOVO BOTÃO -->
+    <a class="btn cartao"
+       href="https://wa.me/5511999999999?text=Quero%20saber%20sobre%20o%20Cartão%20Benefícios"
+       target="_blank">
+       Cartão Benefícios
+    </a>
 
-<div class="card">
-<h4>Atendimento</h4>
-<a class="button" href="https://wa.me/551125026700">
-Falar com IA
-</a>
-</div>
+  </div>
 
-</div>
+  <!-- RODAPÉ -->
+  <footer>
+    <p>Sistema CNDL</p>
 
-<div id="servicos" style="display:none;" class="card">
-<h3>Serviços CDL</h3>
+    <img src="cndl.png">
+    <img src="fcdl.png">
+    <img src="cdl.png">
+    <img src="spc.png">
 
-<p>✔ Plano de Saúde</p>
-<p>✔ Certificado Digital</p>
-<p>✔ Proteção Veicular</p>
-
-<a class="button" href="https://wa.me/551125026700?text=Quero%20informações%20sobre%20os%20serviços">
-Solicitar Atendimento
-</a>
-</div>
-
-</div>
-
-<div class="footer">
-<p>CDL Arujá</p>
-<p>Rua Adhemar de Barros, 95 - Arujá/SP</p>
-<p>Email: contato@cdlaruja.org.br</p>
-<p>WhatsApp: (11) 2502-6700</p>
-
-<br>
-
-<a href="https://www.instagram.com/cdlaruja">Instagram</a> |
-<a href="https://www.facebook.com/cdlaruja">Facebook</a> |
-<a href="https://www.tiktok.com/@cdlaruja">TikTok</a> |
-<a href="https://www.linkedin.com/company/cdlaruja">LinkedIn</a>
-
-</div>
-
-<div class="menu">
-<div>🏠</div>
-<div>💼</div>
-<div>📊</div>
-<div>⚙️</div>
-</div>
-
-<script>
-function mostrarServicos() {
-  var s = document.getElementById("servicos");
-  s.style.display = s.style.display === "none" ? "block" : "none";
-}
-</script>
+    <p>
+      Rua Adhemar de Barros, 95 - Arujá/SP<br>
+      CEP: 07401-290<br>
+      www.cdlaruja.org.br
+    </p>
+  </footer>
 
 </body>
 </html>
