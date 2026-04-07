@@ -1,138 +1,98 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CDL Arujá</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f4f8;
+  margin: 0;
+  text-align: center;
+}
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f6fa;
-      text-align: center;
-    }
+.container {
+  padding: 20px;
+}
 
-    header {
-      background: white;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+.logo {
+  width: 180px;
+  margin-top: 20px;
+}
 
-    header img {
-      max-width: 180px;
-    }
+h2 {
+  color: #1a2f6c;
+  margin-top: 10px;
+}
 
-    h1 {
-      margin-top: 10px;
-      color: #1e3a8a;
-    }
+.button {
+  display: block;
+  width: 90%;
+  max-width: 400px;
+  margin: 12px auto;
+  padding: 15px;
+  border-radius: 12px;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    .container {
-      padding: 30px;
-    }
-<footer style="margin-top:40px;">
-  <img src="rodape.png" style="width:100%; max-width:500px;">
-</footer>
-    .btn {
-      display: block;
-      width: 90%;
-      max-width: 400px;
-      margin: 10px auto;
-      padding: 15px;
-      border-radius: 10px;
-      text-decoration: none;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+.azul { background: #2f5bd3; }
+.verde { background: #22c55e; }
+.roxo { background: #7c3aed; }
+.laranja { background: #f59e0b; }
 
-    .btn:hover {
-      transform: scale(1.05);
-    }
-
-    .spc { background: #2563eb; }
-    .whatsapp { background: #25D366; }
-    .servicos { background: #7c3aed; }
-    .cartao { background: #f59e0b; }
-
-    footer {
-      margin-top: 40px;
-      background: #1e3a8a;
-      color: white;
-      padding: 20px;
-      font-size: 14px;
-    }
-
-    footer img {
-      max-width: 80px;
-      margin: 5px;
-    }
-  </style>
+footer {
+  margin-top: 40px;
+  background: #0b2c6b;
+  padding: 20px;
+}
+footer img {
+  width: 100%;
+  max-width: 500px;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- TOPO COM LOGO -->
-  <header>
-    <img src="LOGO CDL ARUJA PNG.png"> 
-    <h1>CDL Arujá</h1>
-    <p>Painel do Associado</p>
-  </header>
+<div class="container">
+
+  <!-- LOGO -->
+  <img src="LOGO CDL ARUJA PNG.png" class="logo">
+
+  <h2>Painel do Associado</h2>
 
   <!-- BOTÕES -->
-  <div class="container">
+  <a class="button azul" href="https://login.spcbrasil.org.br" target="_blank">
+    Consultar SPC
+  </a>
 
-    <!-- SPC -->
-    <a class="btn spc"
-       href="https://login.spcbrasil.com.br/realms/associado/protocol/openid-connect/auth"
-       target="_blank">
-       Consultar SPC
-    </a>
+  <a class="button verde" href="https://wa.me/SEUNUMERO" target="_blank">
+    Boletos
+  </a>
 
-    <!-- BOLETOS -->
-    <a class="btn whatsapp"
-       href="https://wa.me/551125026700?text=Quero%20segunda%20via%20de%20boleto"
-       target="_blank">
-       Boletos
-    </a>
+  <a class="button verde" href="https://wa.me/SEUNUMERO" target="_blank">
+    Atendimento
+  </a>
 
-    <!-- ATENDIMENTO -->
-    <a class="btn whatsapp"
-       href="https://wa.me/551125026700?text=Preciso%20de%20atendimento"
-       target="_blank">
-       Atendimento
-    </a>
+  <a class="button roxo" href="#">
+    Serviços CDL
+  </a>
 
-    <!-- SERVIÇOS -->
-    <a class="btn servicos"
-       href="https://cdlaruja.org.br"
-       target="_blank">
-       Serviços CDL
-    </a>
+  <a class="button laranja" href="#">
+    Cartão Benefícios
+  </a>
 
-    <!-- NOVO BOTÃO -->
-    <a class="btn cartao"
-       href="https://wa.me/551125026700?text=Quero%20saber%20sobre%20o%20Cartão%20Benefícios"
-       target="_blank">
-       Cartão Benefícios
-    </a>
+</div>
 
-  </div>
-
-  <!-- RODAPÉ -->
-  <footer>
-    <p>Sistema CNDL</p>
-
-   <img src="Rodapé papel.png" style="max-width: 100%;">
-
-    <p>
-      Rua Adhemar de Barros, 95 - Arujá/SP<br>
-      CEP: 07401-290<br>
-      www.cdlaruja.org.br
-    </p>
-  </footer>
+<!-- RODAPÉ -->
+<footer>
+  <img src="Rodapé papel.png">
+</footer>
 
 </body>
 </html>
