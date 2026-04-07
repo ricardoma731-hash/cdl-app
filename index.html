@@ -7,98 +7,145 @@
 
 <style>
 body {
-  font-family: Arial, sans-serif;
-  background: #f2f4f8;
-  margin: 0;
-  text-align: center;
+  font-family: Arial;
+  background:#f2f4f8;
+  margin:0;
+  text-align:center;
 }
 
 .container {
-  padding: 20px;
+  padding:20px;
 }
 
 .logo {
-  width: 180px;
-  margin-top: 20px;
+  width:180px;
+  margin-top:20px;
 }
 
-h2 {
-  color: #1a2f6c;
-  margin-top: 10px;
+input {
+  width:90%;
+  max-width:300px;
+  padding:12px;
+  margin:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
 }
 
 .button {
-  display: block;
-  width: 90%;
-  max-width: 400px;
-  margin: 12px auto;
-  padding: 15px;
-  border-radius: 12px;
-  color: white;
-  font-size: 18px;
-  text-decoration: none;
-  font-weight: bold;
+  display:block;
+  width:90%;
+  max-width:300px;
+  margin:10px auto;
+  padding:15px;
+  border-radius:10px;
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
 }
 
-.azul { background: #2f5bd3; }
-.verde { background: #22c55e; }
-.roxo { background: #7c3aed; }
-.laranja { background: #f59e0b; }
+.azul { background:#2f5bd3; }
+.verde { background:#22c55e; }
+.roxo { background:#7c3aed; }
+.laranja { background:#f59e0b; }
+
+.hidden { display:none; }
 
 footer {
-  margin-top: 40px;
-  background: #0b2c6b;
-  padding: 20px;
+  margin-top:40px;
+  background:#0b2c6b;
+  padding:20px;
 }
 footer img {
-  width: 100%;
-  max-width: 500px;
+  width:100%;
+  max-width:500px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- LOGIN -->
+<div id="login">
 
-  <!-- LOGO -->
-  <img src="LOGO CDL ARUJA PNG.png" class="logo">
+<img src="LOGO CDL ARUJA PNG.png" class="logo">
 
-  <h2>Painel do Associado</h2>
+<h2>Área do Associado</h2>
 
-  <!-- BOTÕES -->
+<input type="text" id="cpf" placeholder="Digite seu CPF">
+<input type="text" id="nome" placeholder="Seu nome (primeiro acesso)">
 
-  <!-- CONSULTAR SPC -->
-  <a class="button azul" href="https://login.spcbrasil.org.br" target="_blank">
-    Consultar SPC
-  </a>
-
-  <!-- BOLETOS -->
-  <a class="button verde" href="https://wa.me/551125026700?text=Olá,%20preciso%20de%20boletos" target="_blank">
-    Boletos
-  </a>
-
-  <!-- ATENDIMENTO -->
-  <a class="button verde" href="https://wa.me/551125026700?text=Olá,%20preciso%20de%20atendimento" target="_blank">
-    Atendimento
-  </a>
-
-  <!-- SERVIÇOS CDL -->
-  <a class="button roxo" href="https://cdlaruja.org.br" target="_blank">
-    Serviços CDL
-  </a>
-
-  <!-- CARTÃO BENEFÍCIOS -->
-  <a class="button laranja" href="https://cdlaruja.org.br" target="_blank">
-    Cartão Benefícios
-  </a>
+<button class="button azul" onclick="login()">Entrar</button>
 
 </div>
 
-<!-- RODAPÉ -->
+<!-- PAINEL -->
+<div id="painel" class="hidden">
+
+<img src="LOGO CDL ARUJA PNG.png" class="logo">
+
+<h2 id="nomeUser"></h2>
+
+<a class="button azul" href="https://login.spcbrasil.org.br" target="_blank">
+Consultar SPC
+</a>
+
+<a class="button verde" href="https://wa.me/5511999999999?text=Preciso%20de%20boletos">
+Boletos
+</a>
+
+<a class="button verde" href="https://wa.me/5511999999999?text=Preciso%20de%20atendimento">
+Atendimento
+</a>
+
+<a class="button roxo" href="https://cdlaruja.org.br">
+Serviços CDL
+</a>
+
+<a class="button laranja" href="#">
+Cartão Benefícios
+</a>
+
+<button class="button" onclick="logout()" style="background:#111;">
+Sair
+</button>
+
+</div>
+
 <footer>
-  <img src="rodape.png">
+<img src="rodape.png">
 </footer>
+
+<script>
+function login() {
+  let cpf = document.getElementById("cpf").value;
+  let nome = document.getElementById("nome").value;
+
+  if (!cpf) {
+    alert("Digite o CPF");
+    return;
+  }
+
+  if (!localStorage.getItem(cpf)) {
+    if (!nome) {
+      alert("Digite seu nome no primeiro acesso");
+      return;
+    }
+    localStorage.setItem(cpf, nome);
+  }
+
+  let nomeSalvo = localStorage.getItem(cpf);
+
+  document.getElementById("nomeUser").innerText = "Olá, " + nomeSalvo;
+
+  document.getElementById("login").classList.add("hidden");
+  document.getElementById("painel").classList.remove("hidden");
+}
+
+function logout() {
+  document.getElementById("painel").classList.add("hidden");
+  document.getElementById("login").classList.remove("hidden");
+}
+</script>
 
 </body>
 </html>
