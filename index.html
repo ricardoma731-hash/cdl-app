@@ -123,29 +123,37 @@ Sair
 
 <script>
 
-// LISTA DE CPFs AUTORIZADOS
-var associados = ["50163450404"];
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
-function login() {
-  var cpf = document.getElementById("cpf").value.replace(/\D/g, "");
-  var nome = document.getElementById("nome").value;
+<script>
 
-  if (associados.indexOf(cpf) === -1) {
+const supabase = window.supabase.createClient(
+  "COLE_SUA_URL_AQUI",
+  "COLE_SUA_KEY_AQUI"
+);
+
+async function login() {
+  let cpf = document.getElementById("cpf").value.replace(/\D/g, "");
+  let nome = document.getElementById("nome").value;
+
+  if (!cpf) {
+    alert("Digite o CPF");
+    return;
+  }
+
+  // CONSULTA NO BANCO
+  let { data, error } = await supabase
+    .from("associados")
+    .select("*")
+    .eq("cpf", cpf)
+    .single();
+
+  if (error || !data) {
     alert("CPF não encontrado. Procure a CDL.");
     return;
   }
 
-  if (!localStorage.getItem(cpf)) {
-    if (!nome) {
-      alert("Digite seu nome no primeiro acesso");
-      return;
-    }
-    localStorage.setItem(cpf, nome);
-  }
-
-  var nomeSalvo = localStorage.getItem(cpf);
-
-  document.getElementById("nomeUser").innerText = "Olá, " + nomeSalvo;
+  document.getElementById("nomeUser").innerText = "Olá, " + data.nome;
 
   document.getElementById("login").classList.add("hidden");
   document.getElementById("painel").classList.remove("hidden");
@@ -155,6 +163,8 @@ function logout() {
   document.getElementById("painel").classList.add("hidden");
   document.getElementById("login").classList.remove("hidden");
 }
+
+</script>
 
 </script>
 
