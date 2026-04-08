@@ -103,3 +103,60 @@ Serviços CDL
 
 <!-- CARTÃO BENEFÍCIOS -->
 <a class="button laranja" href="https://wa.me/551125026700?text=Olá,%20quero%20informações%
+
+</a>
+
+<button class="button" onclick="logout()" style="background:#111;">
+Sair
+</button>
+
+</div>
+
+<!-- RODAPÉ -->
+<footer>
+<img src="rodape.png">
+</footer>
+
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+const supabase = window.supabase.createClient(
+  "https://yxydyjymidbbkvkmixko.supabase.co",
+  "sb_publishable_amgmxDmiB8QHNqjc_jZVQ_hF9xsMKM"
+);
+
+async function login() {
+  let cpf = document.getElementById("cpf").value.replace(/\D/g, "");
+
+  if (!cpf) {
+    alert("Digite o CPF");
+    return;
+  }
+
+  let { data, error } = await supabase
+    .from("associados")
+    .select("*")
+    .eq("cpf", cpf)
+    .single();
+
+  if (error || !data) {
+    alert("CPF não encontrado. Procure a CDL.");
+    return;
+  }
+
+  document.getElementById("nomeUser").innerText = "Olá, " + data.nome;
+
+  document.getElementById("login").classList.add("hidden");
+  document.getElementById("painel").classList.remove("hidden");
+}
+
+function logout() {
+  document.getElementById("painel").classList.add("hidden");
+  document.getElementById("login").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
+  
