@@ -6,40 +6,22 @@
 <title>CDL Arujá</title>
 
 <style>
-body {
-  font-family: Arial, sans-serif;
-  background:#f2f4f8;
-  margin:0;
-  text-align:center;
-}
-
-.logo {
-  width:180px;
-  margin-top:20px;
-}
-
-.container {
-  padding:20px;
-}
+body { font-family: Arial; background:#f2f4f8; margin:0; text-align:center; }
+.logo { width:180px; margin-top:20px; }
+.container { padding:20px; }
 
 input {
-  width:90%;
-  max-width:300px;
-  padding:12px;
-  margin:10px;
-  border-radius:8px;
-  border:1px solid #ccc;
+  width:90%; max-width:300px;
+  padding:12px; margin:10px;
+  border-radius:8px; border:1px solid #ccc;
 }
 
 .button {
   display:block;
-  width:90%;
-  max-width:300px;
-  margin:10px auto;
-  padding:15px;
+  width:90%; max-width:300px;
+  margin:10px auto; padding:15px;
   border-radius:10px;
-  color:white;
-  text-decoration:none;
+  color:white; text-decoration:none;
   font-weight:bold;
 }
 
@@ -66,26 +48,21 @@ footer img {
 
 <!-- LOGIN -->
 <div id="login">
-
 <img src="LOGO CDL ARUJA PNG.png" class="logo">
-
 <h2>Área do Associado</h2>
 
 <input type="text" id="cpf" placeholder="Digite seu CPF">
 <input type="text" id="nome" placeholder="Seu nome (primeiro acesso)">
 
 <button class="button azul" onclick="login()">Entrar</button>
-
 </div>
 
 <!-- PAINEL -->
 <div id="painel" class="hidden">
 
 <img src="LOGO CDL ARUJA PNG.png" class="logo">
-
 <h2 id="nomeUser"></h2>
 
-<a class="button azul" href="https://login.spcbrasil.org.br" target="_blank">
 <!-- CONSULTAR SPC -->
 <a class="button azul" href="https://login.spcbrasil.com.br/realms/associado/protocol/openid-connect/auth?response_type=code&client_id=spcjava&scope=openid+email+profile&redirect_uri=https%3A%2F%2Fsistema.spcbrasil.com.br%2Fspc%2Fopenid_connect_login&nonce=1e8521c5f6df2&state=3422ac90d4d8e" target="_blank">
 Consultar SPC
@@ -101,13 +78,13 @@ Boletos
 Atendimento
 </a>
 
-<!-- SERVIÇOS CDL -->
-<a class="button roxo" href="https://wa.me/551125026700?text=Olá,%20quero%20conhecer%20os%20serviços%20da%20CDL" target="_blank">
+<!-- SERVIÇOS -->
+<a class="button roxo" href="https://wa.me/551125026700?text=Olá,%20quero%20conhecer%20os%20serviços" target="_blank">
 Serviços CDL
 </a>
 
-<!-- CARTÃO BENEFÍCIOS -->
-<a class="button laranja" href="https://wa.me/551125026700?text=Olá,%20quero%20informações%20sobre%20o%20cartão%20de%20benefícios" target="_blank">
+<!-- CARTÃO -->
+<a class="button laranja" href="https://wa.me/551125026700?text=Olá,%20quero%20informações%20sobre%20o%20cartão" target="_blank">
 Cartão Benefícios
 </a>
 
@@ -121,27 +98,19 @@ Sair
 <img src="rodape.png">
 </footer>
 
-<script>
-
+<!-- SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
 <script>
 
 const supabase = window.supabase.createClient(
-  "https://SEU-PROJETO.supabase.co",
-  "SUA-CHAVE-AQUI"
+  "COLE_SUA_URL_AQUI",
+  "COLE_SUA_KEY_AQUI"
 );
 
 async function login() {
   let cpf = document.getElementById("cpf").value.replace(/\D/g, "");
-  let nome = document.getElementById("nome").value;
 
-  if (!cpf) {
-    alert("Digite o CPF");
-    return;
-  }
-
-  // CONSULTA NO BANCO
   let { data, error } = await supabase
     .from("associados")
     .select("*")
@@ -163,8 +132,6 @@ function logout() {
   document.getElementById("painel").classList.add("hidden");
   document.getElementById("login").classList.remove("hidden");
 }
-
-</script>
 
 </script>
 
