@@ -136,13 +136,20 @@ const supabase = window.supabase.createClient(
   "sb_publishable_amgmxDmiB8QHNqjc_jZVQ_hF9xsMKM"
 );
 
-async function login() {
-  let cpf = document.getElementById("cpf").value.replace(/\D/g, "");
+<script>
+function login() {
+  let cpf = document.getElementById("cpf").value;
 
-  if (!cpf) {
-    alert("Digite o CPF");
-    return;
+  if (cpf === "12345678900") {
+    document.getElementById("nomeUser").innerText = "Olá, TESTE OK";
+
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("painel").classList.remove("hidden");
+  } else {
+    alert("CPF não autorizado");
   }
+}
+</script>
 
   let { data, error } = await supabase
     .from("associados")
