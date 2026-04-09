@@ -13,11 +13,13 @@ body {
   text-align:center;
 }
 
+/* LOGO */
 .logo {
-  width:180px;
+  width:160px;
   margin-top:20px;
 }
 
+/* INPUTS */
 input {
   width:90%;
   max-width:300px;
@@ -27,6 +29,7 @@ input {
   border:1px solid #ccc;
 }
 
+/* BOTÕES */
 .button {
   display:block;
   width:90%;
@@ -46,20 +49,22 @@ input {
 
 .hidden { display:none; }
 
+/* RODAPÉ BONITO E PEQUENO */
 footer {
-  margin-top:40px;
-  padding:20px 0;
-  background:#f2f4f8;
-  text-align:center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 5px 0;
+  background: transparent;
 }
 
 footer img {
-  width:100%;
-  max-width:700px;
-  display:block;
-  margin:0 auto;
+  width: 90%;
+  max-width: 350px;
+  display: block;
+  margin: 0 auto;
+  opacity: 0.9;
 }
-  
 </style>
 </head>
 
@@ -73,7 +78,7 @@ footer img {
 <h2>Área do Associado</h2>
 
 <input type="text" id="cpf" placeholder="Digite seu CPF">
-<input type="text" id="nome" placeholder="Seu nome (primeiro acesso)">
+<input type="text" id="nome" placeholder="Seu nome (opcional)">
 
 <button class="button azul" onclick="login()">Entrar</button>
 
@@ -128,7 +133,7 @@ Sair
 <script>
 const supabase = window.supabase.createClient(
   "https://yxydyjymidbbkvkmixko.supabase.co",
-  "sb_publishable__amgmxDmiB8QHNqjc_jZVQ_hF9xsMKM"
+  "sb_publishable_amgmxDmiB8QHNqjc_jZVQ_hF9xsMKM"
 );
 
 async function login() {
@@ -144,6 +149,8 @@ async function login() {
     .select("*")
     .eq("cpf", cpf)
     .single();
+
+  console.log("RETORNO:", data, error);
 
   if (error || !data) {
     alert("CPF não encontrado. Procure a CDL.");
@@ -164,4 +171,3 @@ function logout() {
 
 </body>
 </html>
-  
